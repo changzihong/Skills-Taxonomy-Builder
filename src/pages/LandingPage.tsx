@@ -189,7 +189,7 @@ const LandingPage = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
                     <div className="flex items-center space-x-2 mb-4 md:mb-0">
                         <Rocket className="text-primary-600 w-6 h-6" />
-                        <span className="text-xl font-bold font-heading">SkillPath AI</span>
+                        <span className="text-xl font-bold font-heading">Kadosh AI</span>
                     </div>
                     <p className="text-gray-500 text-sm">
                         © 2026SkillPath AI. All rights reserved. Built with precision for professional growth.
