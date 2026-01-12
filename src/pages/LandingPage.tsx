@@ -192,7 +192,7 @@ const LandingPage = () => {
                         <span className="text-xl font-bold font-heading">Kadosh AI</span>
                     </div>
                     <p className="text-gray-500 text-sm">
-                        © 2026SkillPath AI. All rights reserved. Built with precision for professional growth.
+                        ©2026 SkillPath AI. All rights reserved. Built with precision for professional growth.
                     </p>
                 </div>
             </footer>
