@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Brain, Target, TrendingUp, Share2, Rocket, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import kadoshLogo from '../image/kadosh_ai_logo.jpeg';
+import kadoshLogo from '../components/image/kadosh_ai_logo.jpeg';
 
 const LandingPage = () => {
     return (
