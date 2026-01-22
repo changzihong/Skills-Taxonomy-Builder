@@ -113,8 +113,8 @@ const Step4StudyPlan = () => {
                             transition={{ delay: i * 0.1 }}
                             className="glass-card p-6 rounded-2xl bg-white border-2 border-gray-100 hover:border-primary-200 transition-all relative"
                         >
-                            <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-primary-600 to-accent-600 rounded-full flex items-center justify-center shadow-lg">
-                                <span className="text-white font-bold text-lg">Step {i + 1}</span>
+                            <div className="absolute -top-3 -left-3 w-10 h-10 bg-gradient-to-br from-primary-600 to-accent-600 rounded-full flex items-center justify-center shadow-lg">
+                                <span className="text-white font-bold text-xl">{i + 1}</span>
                             </div>
                             <div className="flex items-center space-x-2 mb-4 mt-2">
                                 <Calendar className="w-5 h-5 text-accent-600" />
