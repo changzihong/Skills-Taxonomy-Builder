@@ -19,7 +19,7 @@ const Step6Persona = () => {
             'Udemy': `https://www.udemy.com/courses/search/?q=${encodedQuery}`,
             'Pluralsight': `https://www.pluralsight.com/search?q=${encodedQuery}`,
             'edX': `https://www.edx.org/search?q=${encodedQuery}`,
-            'LinkedIn Learning': `https://www.google.com/search?q=site:linkedin.com/learning+${encodedQuery}`,
+            'LinkedIn Learning': `https://www.linkedin.com/learning/search?keywords=${encodedQuery}`,
             'Udacity': `https://www.udacity.com/courses/all?search=${encodedQuery}`,
             'Khan Academy': `https://www.khanacademy.org/search?page_search_query=${encodedQuery}`,
         };
