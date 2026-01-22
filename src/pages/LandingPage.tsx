@@ -176,11 +176,6 @@ const LandingPage = () => {
                                 </div>
                             ))}
                         </div>
-
-                        <div className="mt-16">
-                            <div className="relative inline-block group">
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
