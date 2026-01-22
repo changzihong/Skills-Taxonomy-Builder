@@ -44,9 +44,9 @@ const LandingPage = () => {
                         </p>
                         <motion.div
                             className="flex flex-col sm:flex-row items-center justify-center gap-6"
-                            initial={{ scale: 0.8, opacity: 0 }}
+                            initial={{ scale: 0.5, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
-                            transition={{ duration: 0.5, delay: 0.3, type: "spring", stiffness: 200 }}
+                            transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 150 }}
                         >
                             <Link to="/assess" className="px-8 py-4 rounded-2xl font-bold text-white shadow-xl shadow-teal-500/30 bg-gradient-to-r from-teal-500 to-indigo-600 hover:scale-105 transition-all duration-200 text-lg flex items-center space-x-2">
                                 <span>Start Your Journey — It's Free</span>
