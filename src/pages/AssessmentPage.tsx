@@ -72,7 +72,36 @@ const AssessmentPage = () => {
                             </div>
                             <div className="flex justify-between mt-2 text-[10px] font-bold uppercase tracking-wider text-gray-400">
                                 {steps.map((step, i) => (
-                                    <span key={i} className={current_step === i + 1 ? 'text-primary-600' : ''}>{step}</span>
+                                    <div key={i} className="flex flex-col items-center relative">
+                                        <motion.span
+                                            className={current_step === i + 1
+                                                ? 'gradient-text font-extrabold'
+                                                : 'text-gray-400'}
+                                            animate={{
+                                                scale: current_step === i + 1 ? 1.15 : 1,
+                                            }}
+                                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                            style={{
+                                                filter: current_step === i + 1
+                                                    ? 'drop-shadow(0 2px 8px rgba(20, 184, 166, 0.4))'
+                                                    : 'none'
+                                            }}
+                                        >
+                                            {step}
+                                        </motion.span>
+                                        {current_step === i + 1 && (
+                                            <motion.div
+                                                className="absolute -bottom-2 w-1 h-1 rounded-full bg-gradient-to-r from-primary-600 to-accent-600"
+                                                initial={{ scale: 0 }}
+                                                animate={{ scale: [1, 1.3, 1] }}
+                                                transition={{
+                                                    repeat: Infinity,
+                                                    duration: 1.5,
+                                                    ease: "easeInOut"
+                                                }}
+                                            />
+                                        )}
+                                    </div>
                                 ))}
                             </div>
                         </div>
