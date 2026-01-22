@@ -85,17 +85,6 @@ const LandingPage = () => {
                             </div>
                         </div>
 
-                        {/* Floating Elements */}
-                        <motion.div
-                            animate={{ y: [0, -20, 0] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -top-10 -right-10 w-32 h-32 bg-white rounded-2xl shadow-2xl p-6 flex flex-col items-center justify-center space-y-2 z-20"
-                        >
-                            <div className="w-10 h-10 bg-success-100 rounded-full flex items-center justify-center">
-                                <CheckCircle2 className="text-success-600 w-6 h-6" />
-                            </div>
-                            <span className="text-sm font-bold text-gray-800">Verified</span>
-                        </motion.div>
                     </motion.div>
                 </div>
             </section>
