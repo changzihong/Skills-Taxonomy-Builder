@@ -6,7 +6,7 @@ import { Share2, Download, Check, Sparkles, Globe, Award, Target, BookOpen, Map,
 import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
 
-const Step7Persona = () => {
+const Step6Persona = () => {
     const { profile, setProfile } = useProfileStore();
     const [saving, setSaving] = useState(false);
     const [copied, setCopied] = useState(false);
@@ -407,4 +407,4 @@ const Step7Persona = () => {
     );
 };
 
-export default Step7Persona;
+export default Step6Persona;

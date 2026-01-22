@@ -3,10 +3,9 @@ import { useProfileStore } from '@/store/useProfileStore';
 import Step1UserInfo from '@/components/assessment/Step1UserInfo';
 import Step2Chat from '../components/assessment/Step2Chat';
 import Step3Gaps from '../components/assessment/Step3Gaps';
-import Step4Recommendations from '../components/assessment/Step4Recommendations';
-import Step5StudyPlan from '../components/assessment/Step5StudyPlan';
-import Step6Salary from '../components/assessment/Step6Salary';
-import Step7Persona from '../components/assessment/Step7Persona';
+import Step4StudyPlan from '../components/assessment/Step4StudyPlan';
+import Step5Salary from '../components/assessment/Step5Salary';
+import Step6Persona from '../components/assessment/Step6Persona';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, Rocket } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -30,10 +29,9 @@ const AssessmentPage = () => {
             case 1: return <Step1UserInfo />;
             case 2: return <Step2Chat />;
             case 3: return <Step3Gaps />;
-            case 4: return <Step4Recommendations />;
-            case 5: return <Step5StudyPlan />;
-            case 6: return <Step6Salary />;
-            case 7: return <Step7Persona />;
+            case 4: return <Step4StudyPlan />;
+            case 5: return <Step5Salary />;
+            case 6: return <Step6Persona />;
             default: return <Step1UserInfo />;
         }
     };
@@ -44,7 +42,6 @@ const AssessmentPage = () => {
         'Background',
         'Assessment',
         'Gap Analysis',
-        'Learning',
         'Study Plan',
         'Salary',
         'Profile'
@@ -69,7 +66,7 @@ const AssessmentPage = () => {
                             <div className="relative h-2 bg-gray-100 rounded-full overflow-hidden">
                                 <motion.div
                                     initial={{ width: 0 }}
-                                    animate={{ width: `${(current_step / 7) * 100}%` }}
+                                    animate={{ width: `${(current_step / 6) * 100}%` }}
                                     className="absolute top-0 left-0 h-full bg-gradient-to-r from-primary-600 to-accent-600"
                                 />
                             </div>
@@ -87,7 +84,7 @@ const AssessmentPage = () => {
                             >
                                 Start Over
                             </button>
-                            <span className="text-sm font-bold text-gray-500">Step {current_step}/7</span>
+                            <span className="text-sm font-bold text-gray-500">Step {current_step}/6</span>
                             {current_step > 1 && (
                                 <button
                                     onClick={prevStep}

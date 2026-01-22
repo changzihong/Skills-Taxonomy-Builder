@@ -166,7 +166,7 @@ const Step3Gaps = () => {
 
             <div className="flex justify-end">
                 <button onClick={nextStep} className="btn-primary py-4 px-12 flex items-center group text-lg">
-                    View Learning Recommendations
+                    View Your Study Plan
                     <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
             </div>

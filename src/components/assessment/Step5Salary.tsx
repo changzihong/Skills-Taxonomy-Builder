@@ -4,7 +4,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import { motion } from 'framer-motion';
 import { TrendingUp, DollarSign, ArrowUpRight, ChevronRight, Info } from 'lucide-react';
 
-const Step6Salary = () => {
+const Step5Salary = () => {
     const { profile, nextStep } = useProfileStore();
 
     const salaryData = profile.salary_projection || {
@@ -107,4 +107,4 @@ const Step6Salary = () => {
     );
 };
 
-export default Step6Salary;
+export default Step5Salary;
