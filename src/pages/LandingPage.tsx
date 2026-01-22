@@ -9,25 +9,25 @@ const LandingPage = () => {
         <div className="overflow-hidden">
             {/* Header */}
             <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center">
-    
-    {/* Left: Logo - fixed width to prevent pushing center */}
-    <div className="flex items-center space-x-2 w-1/4">
-      <Rocket className="text-primary-600 w-6 h-6" />
-      <span className="text-2xl font-bold font-heading gradient-text">Skill Taxonomy Builder</span>
-    </div>
-
-    {/* Center: Navigation - flex-1 and justify-center makes it true center */}
-    <nav className="flex-1 flex justify-center space-x-8">
-      <a href="#features" className="text-gray-600 hover:text-primary-600 font-medium transition-colors">Features</a>
-      <a href="#how-it-works" className="text-gray-600 hover:text-primary-600 font-medium transition-colors">How it works</a>
-    </nav>
-
-    {/* Right: Empty spacer to balance the layout (same width as logo) */}
-    <div className="w-1/4 hidden md:block"></div>
-
-  </div>
-</header>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center">
+                  
+                  {/* Left: Logo - fixed width to prevent pushing center */}
+                  <div className="flex items-center space-x-2 w-1/4">
+                    <Rocket className="text-primary-600 w-6 h-6" />
+                    <span className="text-2xl font-bold font-heading gradient-text">Skill Taxonomy Builder</span>
+                  </div>
+              
+                  {/* Center: Navigation - flex-1 and justify-center makes it true center */}
+                  <nav className="flex-1 flex justify-center space-x-8">
+                    <a href="#features" className="text-gray-600 hover:text-primary-600 font-medium transition-colors">Features</a>
+                    <a href="#how-it-works" className="text-gray-600 hover:text-primary-600 font-medium transition-colors">How it works</a>
+                  </nav>
+              
+                  {/* Right: Empty spacer to balance the layout (same width as logo) */}
+                  <div className="w-1/4 hidden md:block"></div>
+              
+                </div>
+              </header>
 
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
