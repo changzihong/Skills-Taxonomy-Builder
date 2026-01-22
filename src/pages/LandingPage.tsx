@@ -146,22 +146,22 @@ const LandingPage = () => {
 
             {/* Footer */}
             <footer className="bg-white border-t border-gray-100 py-12">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
-    <div className="flex items-center justify-center space-x-1 text-gray-500 text-sm">
-      <span>Copyright ©️ 2026</span>
-      
-      {/* Inline Logo */}
-      <img src={kadoshLogo} alt="Kadosh AI Logo" className="w-4 h-4 object-contain mx-1" />
-      
-      {/* Brand Name and All Rights Reserved */}
-      <span className="font-bold text-gray-900">
-        Kadosh<span style={{ color: '#48edc4' }}>AI</span>
-      </span>
-      
-      <span>All rights reserved.</span>
-    </div>
-  </div>
-</footer>
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
+                <div className="flex items-center justify-center space-x-1 text-gray-500 text-sm">
+                  <span>Copyright ©️ 2026</span>
+                  
+                  {/* Inline Logo */}
+                  <img src={kadoshLogo} alt="Kadosh AI Logo" className="w-4 h-4 object-contain mx-1" />
+                  
+                  {/* Brand Name and All Rights Reserved */}
+                  <span className="font-bold text-gray-900">
+                    Kadosh<span style={{ color: '#48edc4' }}>AI</span>
+                  </span>
+                  
+                  <span>All rights reserved.</span>
+                </div>
+              </div>
+            </footer>
         </div>
     );
 };
