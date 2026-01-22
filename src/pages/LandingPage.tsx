@@ -9,19 +9,11 @@ const LandingPage = () => {
         <div className="overflow-hidden">
             {/* Header */}
             <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                        <div className="w-10 h-10 bg-gradient-to-tr from-primary-600 to-accent-600 rounded-xl flex items-center justify-center">
-                            <Rocket className="text-white w-6 h-6" />
-                        </div>
-                        <span className="text-2xl font-bold font-heading gradient-text">SkillPath AI</span>
-                    </div>
-                    <nav className="hidden md:flex space-x-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-center">
+                    <nav className="flex space-x-8">
                         <a href="#features" className="text-gray-600 hover:text-primary-600 font-medium transition-colors">Features</a>
                         <a href="#how-it-works" className="text-gray-600 hover:text-primary-600 font-medium transition-colors">How it works</a>
                     </nav>
-                    <div className="relative group">
-                    </div>
                 </div>
             </header>
 
@@ -47,15 +39,10 @@ const LandingPage = () => {
                             Discover your skill gaps, get personalized learning plans, and unlock your earning potential in minutes. Powered by advanced AI to help you navigate your professional growth.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                            <div className="relative group">
-                                <Link to="/assess" className="p-5 rounded-2xl font-bold text-white shadow-xl shadow-teal-500/30 bg-gradient-to-r from-teal-500 to-indigo-600 hover:scale-110 transition-all duration-200 text-lg flex items-center">
-                                    <Rocket className="w-7 h-7" />
-                                </Link>
-                                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
-                                    Start Your Journey — It's Free
-                                </div>
-                            </div>
-                            
+                            <Link to="/assess" className="px-8 py-4 rounded-2xl font-bold text-white shadow-xl shadow-teal-500/30 bg-gradient-to-r from-teal-500 to-indigo-600 hover:scale-105 transition-all duration-200 text-lg flex items-center space-x-2">
+                                <span>Start Your Journey — It's Free</span>
+                                <ArrowRight className="w-5 h-5" />
+                            </Link>
                         </div>
                     </motion.div>
 
