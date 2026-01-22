@@ -179,12 +179,6 @@ const LandingPage = () => {
 
                         <div className="mt-16">
                             <div className="relative inline-block group">
-                                <Link to="/assess" className="p-5 rounded-2xl font-bold text-white shadow-xl shadow-teal-500/30 bg-gradient-to-r from-teal-500 to-indigo-600 hover:scale-110 transition-all duration-200 inline-flex items-center">
-                                    <ArrowRight className="w-6 h-6" />
-                                </Link>
-                                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
-                                    Begin Assessment Now
-                                </div>
                             </div>
                         </div>
                     </div>
