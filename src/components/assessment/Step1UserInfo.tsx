@@ -270,10 +270,14 @@ const Step1UserInfo = () => {
                 </div>
 
                 <div className="flex justify-end">
-                    <button type="submit" className="btn-primary py-4 px-12 flex items-center group">
-                        Continue to AI Assessment
-                        <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    <div className="relative group">
+                        <button type="submit" className="p-4 rounded-xl bg-primary-600 hover:bg-primary-700 text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all">
+                            <ArrowRight className="w-6 h-6" />
+                        </button>
+                        <div className="absolute bottom-full right-0 mb-2 px-3 py-1.5 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
+                            Continue to AI Assessment
+                        </div>
+                    </div>
                 </div>
             </form>
         </motion.div>

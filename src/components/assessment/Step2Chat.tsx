@@ -168,14 +168,18 @@ const Step2Chat = () => {
                         )}
 
                         <div className="mt-8 flex justify-end">
-                            <button
-                                disabled={!currentAnswer || (Array.isArray(currentAnswer) && currentAnswer.length === 0)}
-                                onClick={handleNext}
-                                className="btn-primary py-3 px-8 flex items-center group"
-                            >
-                                {currentIndex === questions.length - 1 ? 'Finish Assessment' : 'Next Question'}
-                                <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                            </button>
+                            <div className="relative group">
+                                <button
+                                    disabled={!currentAnswer || (Array.isArray(currentAnswer) && currentAnswer.length === 0)}
+                                    onClick={handleNext}
+                                    className="p-4 rounded-xl bg-primary-600 hover:bg-primary-700 text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    <Send className="w-5 h-5" />
+                                </button>
+                                <div className="absolute bottom-full right-0 mb-2 px-3 py-1.5 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
+                                    {currentIndex === questions.length - 1 ? 'Finish Assessment' : 'Next Question'}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </motion.div>
