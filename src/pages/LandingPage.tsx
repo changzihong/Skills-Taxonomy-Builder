@@ -65,9 +65,6 @@ const LandingPage = () => {
                                 <a href="#features" className="p-5 rounded-2xl font-bold bg-gray-100 hover:bg-gray-200 text-gray-700 hover:scale-110 transition-all duration-200 text-lg flex items-center shadow-lg">
                                     <Target className="w-7 h-7" />
                                 </a>
-                                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
-                                    Explore Features
-                                </div>
                             </div>
                         </div>
                     </motion.div>
