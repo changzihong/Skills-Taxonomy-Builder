@@ -11,6 +11,21 @@ const Step6Persona = () => {
     const [saving, setSaving] = useState(false);
     const [copied, setCopied] = useState(false);
 
+    // Helper function to generate platform-specific search URLs
+    const getPlatformSearchUrl = (platform: string, query: string) => {
+        const encodedQuery = encodeURIComponent(query);
+        const platformUrls: { [key: string]: string } = {
+            'Coursera': `https://www.coursera.org/search?query=${encodedQuery}`,
+            'Udemy': `https://www.udemy.com/courses/search/?q=${encodedQuery}`,
+            'Pluralsight': `https://www.pluralsight.com/search?q=${encodedQuery}`,
+            'edX': `https://www.edx.org/search?q=${encodedQuery}`,
+            'LinkedIn Learning': `https://www.linkedin.com/learning/search?keywords=${encodedQuery}`,
+            'Udacity': `https://www.udacity.com/courses/all?search=${encodedQuery}`,
+            'Khan Academy': `https://www.khanacademy.org/search?page_search_query=${encodedQuery}`,
+        };
+        return platformUrls[platform] || `https://www.google.com/search?q=${encodedQuery}+${encodeURIComponent(platform)}`;
+    };
+
     const persona = profile.persona_profile_data || {
         title: 'The Modern Architect',
         traits: ['Data-driven', 'Innovative', 'Systemic Thinker'],
@@ -175,7 +190,9 @@ const Step6Persona = () => {
                                     <div className="text-sm text-gray-600 mb-2">
                                         <span className="font-semibold">{course.platform}</span> • {course.duration}
                                     </div>
-                                    <div className="text-xs text-blue-600 break-all">{course.url}</div>
+                                    <div className="text-xs text-blue-600 break-all">
+                                        {course.url || getPlatformSearchUrl(course.platform, course.title)}
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -328,12 +345,14 @@ const Step6Persona = () => {
                         </h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {(profile.recommended_courses || []).map((course: any, i: number) => (
-                                <a
+                                <motion.a
                                     key={i}
-                                    href={course.url}
+                                    href={course.url || getPlatformSearchUrl(course.platform, course.title)}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="block p-4 rounded-lg border border-gray-200 hover:border-teal-500 hover:shadow-md transition-all group"
+                                    whileHover={{ scale: 1.03 }}
+                                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                                 >
                                     <div className="flex justify-between items-start">
                                         <div>
@@ -341,7 +360,7 @@ const Step6Persona = () => {
                                             <p className="text-sm text-gray-500">{course.platform} • {course.type}</p>
                                         </div>
                                     </div>
-                                </a>
+                                </motion.a>
                             ))}
                         </div>
                     </div>
