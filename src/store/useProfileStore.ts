@@ -70,11 +70,18 @@ const initialProfile: ProfileData = {
     persona_profile_data: null
 };
 
-export const useProfileStore = create<ProfileState>((set) => ({
-    profile: initialProfile,
-    setProfile: (data) => set((state) => ({ profile: { ...state.profile, ...data } })),
-    nextStep: () => set((state) => ({ profile: { ...state.profile, current_step: state.profile.current_step + 1 } })),
-    prevStep: () => set((state) => ({ profile: { ...state.profile, current_step: Math.max(1, state.profile.current_step - 1) } })),
-    setStep: (step) => set((state) => ({ profile: { ...state.profile, current_step: step } })),
-    reset: () => set({ profile: initialProfile }),
-}));
+export const useProfileStore = create<ProfileState>()(
+    persist(
+        (set) => ({
+            profile: initialProfile,
+            setProfile: (data) => set((state) => ({ profile: { ...state.profile, ...data } })),
+            nextStep: () => set((state) => ({ profile: { ...state.profile, current_step: state.profile.current_step + 1 } })),
+            prevStep: () => set((state) => ({ profile: { ...state.profile, current_step: Math.max(1, state.profile.current_step - 1) } })),
+            setStep: (step) => set((state) => ({ profile: { ...state.profile, current_step: step } })),
+            reset: () => set({ profile: initialProfile }),
+        }),
+        {
+            name: 'profile-storage',
+        }
+    )
+);

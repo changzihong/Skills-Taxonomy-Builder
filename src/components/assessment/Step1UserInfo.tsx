@@ -28,13 +28,34 @@ const step1Schema = z.object({
 
 const Step1UserInfo = () => {
     const { profile, setProfile, nextStep } = useProfileStore();
-    const { register, handleSubmit, formState: { errors } } = useForm({
+
+    // Convert current_skills to string for form, handling both string arrays and object arrays
+    const skillsAsString = React.useMemo(() => {
+        if (!profile.current_skills) return '';
+        if (typeof profile.current_skills === 'string') return profile.current_skills;
+        if (Array.isArray(profile.current_skills)) {
+            return profile.current_skills
+                .map((s: any) => typeof s === 'string' ? s : s.name)
+                .join(', ');
+        }
+        return '';
+    }, [profile.current_skills]);
+
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: zodResolver(step1Schema),
         defaultValues: {
             ...profile,
-            current_skills: Array.isArray(profile.current_skills) ? profile.current_skills.join(', ') : profile.current_skills
+            current_skills: skillsAsString
         },
     });
+
+    // Update form when profile changes (e.g., when navigating back)
+    React.useEffect(() => {
+        reset({
+            ...profile,
+            current_skills: skillsAsString
+        });
+    }, [profile.full_name, skillsAsString, reset]);
 
     const onSubmit = (data: any) => {
         // Convert comma-separated string to array for store if needed, but OpenAI handles string too.
