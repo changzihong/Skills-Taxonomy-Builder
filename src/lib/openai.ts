@@ -63,9 +63,9 @@ export const analyzeSkills = async (profile: any, answers: any) => {
                 { phase: 'Month 3', goal: 'Leadership', steps: ['Mentoring junior developers', 'Technical strategy documentation'] }
             ],
             recommended_courses: [
-                { title: `Advanced ${title} Masterclass`, platform: 'Udemy', rating: 4.8, duration: '20 hours', type: 'Course', url: `https://www.google.com/search?q=Advanced+${title}+Masterclass+Udemy` },
-                { title: 'System Design for Senior Engineers', platform: 'Coursera', rating: 4.7, duration: '4 weeks', type: 'Specialization', url: 'https://www.google.com/search?q=System+Design+Specialization+Coursera' },
-                { title: 'Technical Leadership', platform: 'Pluralsight', rating: 4.9, duration: '10 hours', type: 'Course', url: 'https://www.google.com/search?q=Technical+Leadership+Pluralsight' }
+                { title: `Advanced ${title} Masterclass`, platform: 'Udemy', rating: 4.8, duration: '20 hours', type: 'Course' },
+                { title: 'System Design for Senior Engineers', platform: 'Coursera', rating: 4.7, duration: '4 weeks', type: 'Specialization' },
+                { title: 'Technical Leadership', platform: 'Pluralsight', rating: 4.9, duration: '10 hours', type: 'Course' }
             ],
             salary_projection: {
                 current: profile.current_salary || 5000,
@@ -99,14 +99,14 @@ export const analyzeSkills = async (profile: any, answers: any) => {
                       "skill_gaps": [{"name": "string", "priority": "Low" | "Medium" | "High", "impact": "string (e.g. +10% salary)"}],
                       "recommendations": "string (strategic overview focused on Malaysia market trends)",
                       "study_plan": [{"phase": "string", "goal": "string", "steps": ["string (detailed actionable step, e.g. 'Build a microservice using Docker')"]}],
-                      "recommended_courses": [{"title": "string", "platform": "string", "rating": number, "duration": "string", "type": "Course" | "Certification", "url": "string (valid URL or search link)"}],
+                      "recommended_courses": [{"title": "string", "platform": "Coursera" | "Udemy" | "Pluralsight" | "edX" | "LinkedIn Learning" | "Udacity" | "Khan Academy", "rating": number, "duration": "string", "type": "Course" | "Certification"}],
                       "salary_projection": {"current": number, "projected": number, "reason": "string", "reference": "string (Source of data, e.g. JobStreet 2024, Hays Asia)"},
                       "persona_profile_data": {"title": "string", "traits": ["string"], "summary": "string"}
                     }
-                    
+
                     IMPORTANT:
                     1. **Salary**: Must be in MYR. Cite a reputable Malaysian source (JobStreet, Hays, Michael Page) in the 'reference' field. Explain CAUSALITY in 'reason' (e.g. "Mastering X reduces operational risk, justifying a 20% premium").
-                    2. **Courses**: Provide REAL URLs if possible, otherwise use Google Search Query URLs (e.g. https://www.google.com/search?q=course+name). Prioritize "Video" content (YouTube, Coursera Clips).
+                    2. **Courses**: Provide specific course titles and select the platform from the supported list (Coursera, Udemy, Pluralsight, edX, LinkedIn Learning, Udacity, Khan Academy). DO NOT include URLs - they will be generated automatically. Prioritize real courses that exist on these platforms.
                     3. **Context**: Use the user's "current_responsibilities" to tailor advice. If they do X, suggest how to move to Y.
                     4. **Skill Validation**: Check if the user's "current_skills" inputs are relevant to their "job_title". Set "relevant": false for skills that are clearly outliers or hobbies not useful for the career.
                     5. **Market Context**: Ensure insights are specific to Malaysia (KL, Penang, Remote).
