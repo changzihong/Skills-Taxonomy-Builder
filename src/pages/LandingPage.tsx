@@ -11,6 +11,7 @@ const LandingPage = () => {
             <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
                     <div className="flex items-center space-x-2">
+                        <Rocket className="text-primary-600 w-6 h-6" />
                         <span className="text-2xl font-bold font-heading gradient-text">Skill Taxonomy Builder</span>
                     </div>
                     <nav className="flex space-x-8">
