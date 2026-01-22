@@ -14,8 +14,9 @@ export const generateQuestions = async (profile: any) => {
         // Return mock questions if no API key
         return [
             { id: 1, text: `On a scale from 1 to 5, how would you rate your proficiency in core technical skills for ${profile.job_title}?`, type: 'rating' },
-            { id: 2, text: "Which of these advanced tools have you used in the past year?", type: 'multiple', options: ['Cloud Services', 'Data Visualization', 'DevOps Pipelines', 'AI/ML Libraries'] },
-            { id: 3, text: "Describe a complex project you led recently.", type: 'text' }
+            { id: 2, text: "What is your preferred work environment?", type: 'single', options: ['Remote', 'Hybrid', 'On-site', 'Flexible'] },
+            { id: 3, text: "Which of these advanced tools have you used in the past year? (Select up to 3)", type: 'multiple', options: ['Cloud Services', 'Data Visualization', 'DevOps Pipelines', 'AI/ML Libraries'] },
+            { id: 4, text: "Describe a complex project you led recently.", type: 'text' }
         ];
     }
 
@@ -24,7 +25,7 @@ export const generateQuestions = async (profile: any) => {
         messages: [
             {
                 role: "system",
-                content: "You are an expert career coach. Based on the user's profile, generate 5-8 assessment questions to evaluate their skills and find gaps. For rating questions, ALWAYS use a scale from 1 to 5 (not 1-10). Return JSON format: { questions: [{ id: number, text: string, type: 'rating' | 'multiple' | 'text', options?: string[] }] }"
+                content: "You are an expert career coach. Based on the user's profile, generate 5-8 assessment questions to evaluate their skills and find gaps. For rating questions, ALWAYS use a scale from 1 to 5 (not 1-10). Question types: 'rating' (1-5 scale), 'single' (choose one option), 'multiple' (choose multiple options), 'text' (free text). Return JSON format: { questions: [{ id: number, text: string, type: 'rating' | 'single' | 'multiple' | 'text', options?: string[] }] }"
             },
             {
                 role: "user",

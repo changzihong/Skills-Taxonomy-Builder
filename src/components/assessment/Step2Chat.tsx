@@ -124,6 +124,29 @@ const Step2Chat = () => {
                             </div>
                         )}
 
+                        {currentQuestion.type === 'single' && (
+                            <div className="grid grid-cols-1 gap-3">
+                                {currentQuestion.options.map((opt: string) => {
+                                    const isSelected = currentAnswer === opt;
+                                    return (
+                                        <button
+                                            key={opt}
+                                            onClick={() => setCurrentAnswer(opt)}
+                                            className={`p-4 rounded-xl text-left font-medium transition-all border ${isSelected
+                                                ? 'bg-primary-50 border-primary-500 text-primary-700 ring-2 ring-primary-200'
+                                                : 'bg-white border-gray-200 text-gray-700 hover:border-primary-300'
+                                                }`}
+                                        >
+                                            <div className="flex items-center justify-between">
+                                                <span>{opt}</span>
+                                                {isSelected && <CheckCircle2 className="w-5 h-5" />}
+                                            </div>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        )}
+
                         {currentQuestion.type === 'multiple' && (
                             <div className="grid grid-cols-1 gap-3">
                                 {currentQuestion.options.map((opt: string) => {
