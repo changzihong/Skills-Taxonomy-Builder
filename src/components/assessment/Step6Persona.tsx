@@ -19,11 +19,11 @@ const Step6Persona = () => {
             'Udemy': `https://www.udemy.com/courses/search/?q=${encodedQuery}`,
             'Pluralsight': `https://www.pluralsight.com/search?q=${encodedQuery}`,
             'edX': `https://www.edx.org/search?q=${encodedQuery}`,
-            'LinkedIn Learning': `https://www.linkedin.com/learning/search?keywords=${encodedQuery}`,
+            'LinkedIn Learning': `https://www.google.com/search?q=site:linkedin.com/learning+${encodedQuery}`,
             'Udacity': `https://www.udacity.com/courses/all?search=${encodedQuery}`,
             'Khan Academy': `https://www.khanacademy.org/search?page_search_query=${encodedQuery}`,
         };
-        return platformUrls[platform] || `https://www.google.com/search?q=${encodedQuery}+${encodeURIComponent(platform)}`;
+        return platformUrls[platform] || `https://www.google.com/search?q=${encodedQuery}+course+${encodeURIComponent(platform)}`;
     };
 
     const persona = profile.persona_profile_data || {
