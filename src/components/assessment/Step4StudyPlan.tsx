@@ -3,7 +3,7 @@ import ReactFlow, { Background, Controls, Edge, Node } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { useProfileStore } from '@/store/useProfileStore';
 import { motion } from 'framer-motion';
-import { Calendar, ChevronRight, Map, BookOpen, PlayCircle, Star, Award, Search, CheckCircle2 } from 'lucide-react';
+import { Calendar, ChevronRight, Map, BookOpen, PlayCircle, Star, Award, Search, CheckCircle2, ExternalLink } from 'lucide-react';
 
 const Step4StudyPlan = () => {
     const { profile, nextStep } = useProfileStore();
@@ -180,10 +180,10 @@ const Step4StudyPlan = () => {
                                 href={getPlatformSearchUrl(course.platform, course.title)}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center space-x-2 px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-lg border border-primary-700 transition-all shadow-sm hover:shadow-md"
+                                className="flex items-center space-x-2 px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-xl border border-primary-700 transition-all shadow-sm hover:shadow-lg hover:scale-105 cursor-pointer"
                             >
-                                <Search className="w-4 h-4 flex-shrink-0" />
-                                <span className="text-sm font-semibold">Search: "{course.title}"</span>
+                                <ExternalLink className="w-5 h-5 flex-shrink-0" />
+                                <span className="text-sm font-semibold whitespace-nowrap">Find Course</span>
                             </a>
                         </motion.div>
                     ))}

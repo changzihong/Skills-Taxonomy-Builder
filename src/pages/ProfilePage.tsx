@@ -458,15 +458,18 @@ const ProfilePage = () => {
                                             href={course.url || getPlatformSearchUrl(course.platform, course.title)}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="p-4 border border-gray-100 rounded-2xl hover:bg-gray-50 transition-all block group hover:shadow-lg hover:border-primary-200"
-                                            whileHover={{ scale: 1.05 }}
+                                            className="p-4 border-2 border-gray-100 rounded-2xl hover:bg-primary-50 transition-all block group hover:shadow-xl hover:border-primary-300 cursor-pointer relative overflow-hidden"
+                                            whileHover={{ scale: 1.05, y: -5 }}
                                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
                                         >
+                                            <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                <ExternalLink className="w-5 h-5 text-primary-600" />
+                                            </div>
                                             <div className="flex justify-between items-start mb-2">
                                                 <span className="text-xs font-bold text-accent-600 bg-accent-50 px-2 py-1 rounded-lg group-hover:bg-accent-100 transition-colors">{course.platform}</span>
                                                 <span className="text-xs font-bold text-gray-400">{course.type}</span>
                                             </div>
-                                            <h4 className="font-bold text-gray-900 leading-tight mb-2 group-hover:text-primary-600 transition-colors">{course.title}</h4>
+                                            <h4 className="font-bold text-gray-900 leading-tight mb-2 group-hover:text-primary-600 transition-colors pr-6">{course.title}</h4>
                                             <div className="flex items-center text-xs text-gray-500 space-x-3">
                                                 <span className="flex items-center"><Calendar className="w-3 h-3 mr-1" /> {course.duration}</span>
                                                 <span className="flex items-center text-yellow-500">★ {course.rating}</span>

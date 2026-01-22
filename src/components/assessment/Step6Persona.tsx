@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useProfileStore } from '@/store/useProfileStore';
 import { saveProfile } from '@/lib/supabase';
 import { motion } from 'framer-motion';
-import { Share2, Download, Check, Sparkles, Globe, Award, Target, BookOpen, Map, TrendingUp } from 'lucide-react';
+import { Share2, Download, Check, Sparkles, Globe, Award, Target, BookOpen, Map, TrendingUp, ExternalLink } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
 
@@ -350,13 +350,16 @@ const Step6Persona = () => {
                                     href={course.url || getPlatformSearchUrl(course.platform, course.title)}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="block p-4 rounded-lg border border-gray-200 hover:border-teal-500 hover:shadow-md transition-all group"
-                                    whileHover={{ scale: 1.03 }}
+                                    className="block p-4 rounded-lg border-2 border-gray-200 hover:border-teal-500 hover:shadow-lg transition-all group cursor-pointer bg-white hover:bg-teal-50"
+                                    whileHover={{ scale: 1.05 }}
                                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                                 >
                                     <div className="flex justify-between items-start">
-                                        <div>
-                                            <h5 className="font-bold text-gray-900 group-hover:text-teal-700 mb-1">{course.title}</h5>
+                                        <div className="flex-1">
+                                            <h5 className="font-bold text-gray-900 group-hover:text-teal-700 mb-1 flex items-center">
+                                                {course.title}
+                                                <ExternalLink className="w-4 h-4 ml-2 text-gray-400 group-hover:text-teal-600 transition-colors" />
+                                            </h5>
                                             <p className="text-sm text-gray-500">{course.platform} • {course.type}</p>
                                         </div>
                                     </div>
