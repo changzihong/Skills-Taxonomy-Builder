@@ -10,6 +10,21 @@ const ProfilePage = () => {
     const [profile, setProfile] = useState<any>(null);
     const [loading, setLoading] = useState(true);
 
+    // Helper function to generate platform-specific search URLs
+    const getPlatformSearchUrl = (platform: string, query: string) => {
+        const encodedQuery = encodeURIComponent(query);
+        const platformUrls: { [key: string]: string } = {
+            'Coursera': `https://www.coursera.org/search?query=${encodedQuery}`,
+            'Udemy': `https://www.udemy.com/courses/search/?q=${encodedQuery}`,
+            'Pluralsight': `https://www.pluralsight.com/search?q=${encodedQuery}`,
+            'edX': `https://www.edx.org/search?q=${encodedQuery}`,
+            'LinkedIn Learning': `https://www.linkedin.com/learning/search?keywords=${encodedQuery}`,
+            'Udacity': `https://www.udacity.com/courses/all?search=${encodedQuery}`,
+            'Khan Academy': `https://www.khanacademy.org/search?page_search_query=${encodedQuery}`,
+        };
+        return platformUrls[platform] || `https://www.google.com/search?q=${encodedQuery}+${encodeURIComponent(platform)}`;
+    };
+
     useEffect(() => {
         const fetchProfile = async () => {
             if (shareId) {
@@ -280,7 +295,9 @@ const ProfilePage = () => {
                                         <div className="text-sm text-gray-600 mb-2">
                                             <span className="font-semibold">{course.platform}</span> • {course.duration}
                                         </div>
-                                        <div className="text-xs text-blue-600 break-all">{course.url}</div>
+                                        <div className="text-xs text-blue-600 break-all">
+                                            {course.url || getPlatformSearchUrl(course.platform, course.title)}
+                                        </div>
                                     </div>
                                 ))}
                             </div>
@@ -378,7 +395,7 @@ const ProfilePage = () => {
                                     {profile.recommended_courses.map((course: any, i: number) => (
                                         <a
                                             key={i}
-                                            href={course.url || `https://www.google.com/search?q=${encodeURIComponent(course.title + ' ' + course.platform)}`}
+                                            href={course.url || getPlatformSearchUrl(course.platform, course.title)}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="p-4 border border-gray-100 rounded-2xl hover:bg-gray-50 transition-colors block group"
