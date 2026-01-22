@@ -191,10 +191,14 @@ const Step4StudyPlan = () => {
             </div>
 
             <div className="flex justify-end">
-                <button onClick={nextStep} className="btn-primary py-4 px-12 flex items-center group text-lg">
-                    See Salary Projections
-                    <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
+                <div className="relative group">
+                    <button onClick={nextStep} className="p-4 rounded-xl bg-primary-600 hover:bg-primary-700 text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all">
+                        <ChevronRight className="w-6 h-6" />
+                    </button>
+                    <div className="absolute bottom-full right-0 mb-2 px-3 py-1.5 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
+                        See Salary Projections
+                    </div>
+                </div>
             </div>
         </div>
     );

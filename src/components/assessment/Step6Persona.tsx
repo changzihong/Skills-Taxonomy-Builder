@@ -403,22 +403,30 @@ const Step6Persona = () => {
                     </div>
 
                     {/* Actions */}
-                    <div className="flex flex-wrap justify-center gap-4 pt-12 border-t border-gray-100">
-                        <button
-                            onClick={handleShare}
-                            disabled={saving}
-                            className="btn-primary py-4 px-8 flex items-center space-x-2"
-                        >
-                            {copied ? <Check className="w-5 h-5" /> : <Share2 className="w-5 h-5" />}
-                            <span>{saving ? 'Generating...' : copied ? 'Link Copied!' : 'Save & Share Profile'}</span>
-                        </button>
-                        <button
-                            onClick={() => window.print()}
-                            className="btn-secondary py-4 px-8 flex items-center space-x-2"
-                        >
-                            <Download className="w-5 h-5" />
-                            <span>Download PDF Report</span>
-                        </button>
+                    <div className="flex flex-wrap justify-center gap-6 pt-12 border-t border-gray-100">
+                        <div className="relative group">
+                            <button
+                                onClick={handleShare}
+                                disabled={saving}
+                                className="p-4 rounded-xl bg-primary-600 hover:bg-primary-700 text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                {copied ? <Check className="w-6 h-6" /> : <Share2 className="w-6 h-6" />}
+                            </button>
+                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
+                                {saving ? 'Generating...' : copied ? 'Link Copied!' : 'Save & Share Profile'}
+                            </div>
+                        </div>
+                        <div className="relative group">
+                            <button
+                                onClick={() => window.print()}
+                                className="p-4 rounded-xl bg-gray-600 hover:bg-gray-700 text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all"
+                            >
+                                <Download className="w-6 h-6" />
+                            </button>
+                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
+                                Download PDF Report
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -20,9 +20,14 @@ const LandingPage = () => {
                         <a href="#features" className="text-gray-600 hover:text-primary-600 font-medium transition-colors">Features</a>
                         <a href="#how-it-works" className="text-gray-600 hover:text-primary-600 font-medium transition-colors">How it works</a>
                     </nav>
-                    <Link to="/assess" className="py-2 px-6 rounded-lg font-bold text-white shadow-lg shadow-teal-500/30 bg-gradient-to-r from-teal-500 to-indigo-600 hover:scale-105 transition-all duration-200">
-                        Get Started
-                    </Link>
+                    <div className="relative group">
+                        <Link to="/assess" className="p-3 rounded-xl flex items-center justify-center font-bold text-white shadow-lg shadow-teal-500/30 bg-gradient-to-r from-teal-500 to-indigo-600 hover:scale-110 transition-all duration-200">
+                            <ArrowRight className="w-5 h-5" />
+                        </Link>
+                        <div className="absolute top-full right-0 mt-2 px-3 py-1.5 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
+                            Get Started
+                        </div>
+                    </div>
                 </div>
             </header>
 
@@ -47,14 +52,23 @@ const LandingPage = () => {
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed">
                             Discover your skill gaps, get personalized learning plans, and unlock your earning potential in minutes. Powered by advanced AI to help you navigate your professional growth.
                         </p>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <Link to="/assess" className="py-4 px-10 rounded-xl font-bold text-white shadow-xl shadow-teal-500/30 bg-gradient-to-r from-teal-500 to-indigo-600 hover:scale-105 transition-all duration-200 text-lg flex items-center group">
-                                Start Your Journey — It's Free
-                                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                            </Link>
-                            <a href="#features" className="btn-secondary py-4 px-10 text-lg">
-                                Explore Features
-                            </a>
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                            <div className="relative group">
+                                <Link to="/assess" className="p-5 rounded-2xl font-bold text-white shadow-xl shadow-teal-500/30 bg-gradient-to-r from-teal-500 to-indigo-600 hover:scale-110 transition-all duration-200 text-lg flex items-center">
+                                    <Rocket className="w-7 h-7" />
+                                </Link>
+                                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
+                                    Start Your Journey — It's Free
+                                </div>
+                            </div>
+                            <div className="relative group">
+                                <a href="#features" className="p-5 rounded-2xl font-bold bg-gray-100 hover:bg-gray-200 text-gray-700 hover:scale-110 transition-all duration-200 text-lg flex items-center shadow-lg">
+                                    <Target className="w-7 h-7" />
+                                </a>
+                                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
+                                    Explore Features
+                                </div>
+                            </div>
                         </div>
                     </motion.div>
 
@@ -177,9 +191,14 @@ const LandingPage = () => {
                         </div>
 
                         <div className="mt-16">
-                            <Link to="/assess" className="py-4 px-10 rounded-xl font-bold text-white shadow-xl shadow-teal-500/30 bg-gradient-to-r from-teal-500 to-indigo-600 hover:scale-105 transition-all duration-200 inline-block">
-                                Begin Assessment Now
-                            </Link>
+                            <div className="relative inline-block group">
+                                <Link to="/assess" className="p-5 rounded-2xl font-bold text-white shadow-xl shadow-teal-500/30 bg-gradient-to-r from-teal-500 to-indigo-600 hover:scale-110 transition-all duration-200 inline-flex items-center">
+                                    <ArrowRight className="w-6 h-6" />
+                                </Link>
+                                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
+                                    Begin Assessment Now
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

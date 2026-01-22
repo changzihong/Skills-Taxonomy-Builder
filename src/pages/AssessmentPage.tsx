@@ -78,21 +78,33 @@ const AssessmentPage = () => {
                         </div>
 
                         <div className="flex items-center space-x-4">
-                            <button
-                                onClick={() => setShowResetConfirm(true)}
-                                className="text-sm font-bold text-gray-400 hover:text-red-500 transition-colors"
-                            >
-                                Start Over
-                            </button>
                             <span className="text-sm font-bold text-gray-500">Step {current_step}/6</span>
                             {current_step > 1 && (
-                                <button
-                                    onClick={prevStep}
-                                    className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-                                >
-                                    <ChevronLeft className="w-6 h-6 text-gray-600" />
-                                </button>
+                                <div className="relative group">
+                                    <button
+                                        onClick={prevStep}
+                                        className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                                    >
+                                        <ChevronLeft className="w-6 h-6 text-gray-600" />
+                                    </button>
+                                    <div className="absolute top-full right-0 mt-2 px-3 py-1.5 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
+                                        Go Back
+                                    </div>
+                                </div>
                             )}
+                            <div className="relative group">
+                                <button
+                                    onClick={() => setShowResetConfirm(true)}
+                                    className="p-2 hover:bg-red-100 rounded-full transition-colors text-gray-400 hover:text-red-500"
+                                >
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                    </svg>
+                                </button>
+                                <div className="absolute top-full right-0 mt-2 px-3 py-1.5 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
+                                    Start Over
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
