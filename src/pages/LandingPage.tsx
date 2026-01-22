@@ -21,7 +21,9 @@ const LandingPage = () => {
                         <a href="#how-it-works" className="text-gray-600 hover:text-primary-600 font-medium transition-colors">How it works</a>
                     </nav>
                     <div className="relative group">
-                        
+                        <Link to="/assess" className="p-3 rounded-xl flex items-center justify-center font-bold text-white shadow-lg shadow-teal-500/30 bg-gradient-to-r from-teal-500 to-indigo-600 hover:scale-110 transition-all duration-200">
+                            <ArrowRight className="w-5 h-5" />
+                        </Link>
                         <div className="absolute top-full right-0 mt-2 px-3 py-1.5 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
                             Get Started
                         </div>
@@ -59,10 +61,7 @@ const LandingPage = () => {
                                     Start Your Journey — It's Free
                                 </div>
                             </div>
-                            <div className="relative group">
-                                <a href="#features" className="p-5 rounded-2xl font-bold bg-gray-100 hover:bg-gray-200 text-gray-700 hover:scale-110 transition-all duration-200 text-lg flex items-center shadow-lg">
-                                    <Target className="w-7 h-7" />
-                                </a>
+                            
                             </div>
                         </div>
                     </motion.div>
