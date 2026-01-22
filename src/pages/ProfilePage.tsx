@@ -91,17 +91,23 @@ const ProfilePage = () => {
             {/* Header */}
             <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 print:hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-                    <Link to="/" className="flex items-center space-x-2">
-                        <Rocket className="text-primary-600 w-5 h-5" />
+                    <Link to="/" className="flex items-center space-x-2 group">
+                        <Rocket className="text-primary-600 w-5 h-5 transition-transform group-hover:scale-110" />
                         <span className="text-lg font-bold font-heading gradient-text">SkillPath AI</span>
                     </Link>
                     <div className="flex items-center space-x-4">
-                        <button
-                            onClick={() => window.print()}
-                            className="p-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-                        >
-                            <Download className="w-5 h-5 text-gray-600" />
-                        </button>
+                        <div className="relative group">
+                            <button
+                                onClick={() => window.print()}
+                                className="p-2 bg-gray-100 rounded-lg hover:bg-primary-100 transition-all hover:scale-110"
+                                title="Download as PDF"
+                            >
+                                <Download className="w-5 h-5 text-gray-600 group-hover:text-primary-600 transition-colors" />
+                            </button>
+                            <div className="absolute top-full right-0 mt-2 px-3 py-1.5 bg-gray-900 text-white text-xs font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
+                                Download as PDF
+                            </div>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -144,13 +150,22 @@ const ProfilePage = () => {
                                 <h1 className="text-3xl font-bold text-gray-900">{profile.full_name}</h1>
                                 <p className="text-lg text-primary-600 font-bold">{profile.job_title}</p>
                             </div>
-                            <div className="px-6 py-3 bg-primary-50 rounded-2xl border border-primary-100">
+                            <motion.div
+                                className="px-6 py-3 bg-primary-50 rounded-2xl border border-primary-100 cursor-default hover:bg-primary-100 transition-colors"
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            >
                                 <div className="text-xs font-bold text-primary-500 uppercase tracking-widest mb-1">Archetype</div>
                                 <div className="text-xl font-bold text-primary-900 flex items-center">
-                                    <Sparkles className="w-5 h-5 mr-2 text-primary-600" />
+                                    <motion.div
+                                        whileHover={{ rotate: 180 }}
+                                        transition={{ duration: 0.5 }}
+                                    >
+                                        <Sparkles className="w-5 h-5 mr-2 text-primary-600" />
+                                    </motion.div>
                                     {profile.persona_profile_data?.title || 'Professional'}
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -164,14 +179,22 @@ const ProfilePage = () => {
                                 </div>
 
                                 <div className="grid grid-cols-2 gap-4">
-                                    <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100">
+                                    <motion.div
+                                        className="p-4 bg-gray-50 rounded-2xl border border-gray-100 hover:bg-gray-100 transition-colors cursor-default"
+                                        whileHover={{ scale: 1.05 }}
+                                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                    >
                                         <div className="text-[10px] font-bold text-gray-400 uppercase mb-1">Location</div>
                                         <div className="font-bold text-gray-800 flex items-center"><Globe className="w-3 h-3 mr-1" /> {profile.country}</div>
-                                    </div>
-                                    <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100">
+                                    </motion.div>
+                                    <motion.div
+                                        className="p-4 bg-gray-50 rounded-2xl border border-gray-100 hover:bg-gray-100 transition-colors cursor-default"
+                                        whileHover={{ scale: 1.05 }}
+                                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                    >
                                         <div className="text-[10px] font-bold text-gray-400 uppercase mb-1">Experience</div>
                                         <div className="font-bold text-gray-800">{profile.years_of_experience} Years</div>
-                                    </div>
+                                    </motion.div>
                                 </div>
                             </div>
 
@@ -181,9 +204,14 @@ const ProfilePage = () => {
                                     <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Verified Strengths</h3>
                                     <div className="flex flex-wrap gap-2">
                                         {profile.current_skills?.map((s: any, i: number) => (
-                                            <span key={i} className="px-3 py-1.5 bg-success-50 text-success-700 rounded-lg text-sm font-bold border border-success-100">
+                                            <motion.span
+                                                key={i}
+                                                className="px-3 py-1.5 bg-success-50 text-success-700 rounded-lg text-sm font-bold border border-success-100 cursor-default"
+                                                whileHover={{ scale: 1.1 }}
+                                                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                                            >
                                                 {typeof s === 'string' ? s : s.name}
-                                            </span>
+                                            </motion.span>
                                         ))}
                                     </div>
                                 </div>
@@ -191,9 +219,14 @@ const ProfilePage = () => {
                                     <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Growth Areas</h3>
                                     <div className="flex flex-wrap gap-2">
                                         {profile.skill_gaps?.map((s: any, i: number) => (
-                                            <span key={i} className="px-3 py-1.5 bg-red-50 text-red-700 rounded-lg text-sm font-bold border border-red-100">
+                                            <motion.span
+                                                key={i}
+                                                className="px-3 py-1.5 bg-red-50 text-red-700 rounded-lg text-sm font-bold border border-red-100 cursor-default"
+                                                whileHover={{ scale: 1.1 }}
+                                                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                                            >
                                                 {typeof s === 'string' ? s : s.name}
-                                            </span>
+                                            </motion.span>
                                         ))}
                                     </div>
                                 </div>
@@ -350,24 +383,43 @@ const ProfilePage = () => {
                 {/* Web View - Roadmap Visualization */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 print:hidden">
                     <div className="lg:col-span-2 space-y-8">
-                        <div className="glass-card p-8 rounded-[32px]">
+                        <motion.div
+                            className="glass-card p-8 rounded-[32px] hover:shadow-xl transition-shadow"
+                            whileHover={{ y: -5 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        >
                             <div className="flex items-center space-x-3 mb-8">
-                                <div className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
+                                <motion.div
+                                    className="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center"
+                                    whileHover={{ rotate: 360 }}
+                                    transition={{ duration: 0.5 }}
+                                >
                                     <Map className="text-primary-600 w-6 h-6" />
-                                </div>
+                                </motion.div>
                                 <h2 className="text-2xl font-bold">Learning Roadmap</h2>
                             </div>
 
                             <div className="space-y-6">
                                 {profile.study_plan?.map((plan: any, i: number) => (
-                                    <div key={i} className="flex space-x-6">
+                                    <motion.div
+                                        key={i}
+                                        className="flex space-x-6 group"
+                                        whileHover={{ x: 5 }}
+                                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                    >
                                         <div className="flex flex-col items-center">
-                                            <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center text-xs font-bold ring-4 ring-primary-100">{i + 1}</div>
+                                            <motion.div
+                                                className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center text-xs font-bold ring-4 ring-primary-100 group-hover:ring-primary-200 transition-all"
+                                                whileHover={{ scale: 1.2 }}
+                                                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                                            >
+                                                {i + 1}
+                                            </motion.div>
                                             {i !== profile.study_plan.length - 1 && <div className="w-1 h-full bg-primary-100 my-2 rounded-full" />}
                                         </div>
                                         <div className="pb-8">
                                             <div className="text-xs font-bold text-primary-500 uppercase mb-1">{plan.phase}</div>
-                                            <h4 className="text-lg font-bold text-gray-900 mb-2">{plan.goal}</h4>
+                                            <h4 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">{plan.goal}</h4>
                                             <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                                                 {plan.steps?.map((s: string, j: number) => (
                                                     <li key={j} className="text-sm text-gray-500 flex items-center">
@@ -377,31 +429,41 @@ const ProfilePage = () => {
                                                 ))}
                                             </ul>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 ))}
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* Recommended Courses Section */}
                         {profile.recommended_courses && (
-                            <div className="glass-card p-8 rounded-[32px]">
+                            <motion.div
+                                className="glass-card p-8 rounded-[32px] hover:shadow-xl transition-shadow"
+                                whileHover={{ y: -5 }}
+                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            >
                                 <div className="flex items-center space-x-3 mb-8">
-                                    <div className="w-10 h-10 bg-accent-100 rounded-xl flex items-center justify-center">
+                                    <motion.div
+                                        className="w-10 h-10 bg-accent-100 rounded-xl flex items-center justify-center"
+                                        whileHover={{ rotate: 360 }}
+                                        transition={{ duration: 0.5 }}
+                                    >
                                         <ExternalLink className="text-accent-600 w-6 h-6" />
-                                    </div>
+                                    </motion.div>
                                     <h2 className="text-2xl font-bold">Recommended Courses</h2>
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {profile.recommended_courses.map((course: any, i: number) => (
-                                        <a
+                                        <motion.a
                                             key={i}
                                             href={course.url || getPlatformSearchUrl(course.platform, course.title)}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="p-4 border border-gray-100 rounded-2xl hover:bg-gray-50 transition-colors block group"
+                                            className="p-4 border border-gray-100 rounded-2xl hover:bg-gray-50 transition-all block group hover:shadow-lg hover:border-primary-200"
+                                            whileHover={{ scale: 1.05 }}
+                                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
                                         >
                                             <div className="flex justify-between items-start mb-2">
-                                                <span className="text-xs font-bold text-accent-600 bg-accent-50 px-2 py-1 rounded-lg">{course.platform}</span>
+                                                <span className="text-xs font-bold text-accent-600 bg-accent-50 px-2 py-1 rounded-lg group-hover:bg-accent-100 transition-colors">{course.platform}</span>
                                                 <span className="text-xs font-bold text-gray-400">{course.type}</span>
                                             </div>
                                             <h4 className="font-bold text-gray-900 leading-tight mb-2 group-hover:text-primary-600 transition-colors">{course.title}</h4>
@@ -409,18 +471,27 @@ const ProfilePage = () => {
                                                 <span className="flex items-center"><Calendar className="w-3 h-3 mr-1" /> {course.duration}</span>
                                                 <span className="flex items-center text-yellow-500">★ {course.rating}</span>
                                             </div>
-                                        </a>
+                                        </motion.a>
                                     ))}
                                 </div>
-                            </div>
+                            </motion.div>
                         )}
                     </div>
 
                     <div className="space-y-8">
-                        <div className="glass-card p-8 rounded-[32px] bg-white border border-gray-200 shadow-xl">
+                        <motion.div
+                            className="glass-card p-8 rounded-[32px] bg-white border border-gray-200 shadow-xl hover:shadow-2xl transition-shadow"
+                            whileHover={{ y: -5 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        >
                             <div className="flex items-center justify-between mb-8">
                                 <h3 className="text-xl font-bold text-gray-900">Market Value</h3>
-                                <TrendingUp className="text-teal-600 w-6 h-6" />
+                                <motion.div
+                                    whileHover={{ scale: 1.2, rotate: 15 }}
+                                    transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                                >
+                                    <TrendingUp className="text-teal-600 w-6 h-6" />
+                                </motion.div>
                             </div>
 
                             <div className="space-y-6">
@@ -453,7 +524,7 @@ const ProfilePage = () => {
                                     )}
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </main>
