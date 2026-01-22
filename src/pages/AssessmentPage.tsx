@@ -59,7 +59,7 @@ const AssessmentPage = () => {
                     <div className="h-20 flex items-center justify-between">
                         <Link to="/" className="flex items-center space-x-2">
                             <Rocket className="text-primary-600 w-6 h-6" />
-                            <span className="text-xl font-bold font-heading gradient-text hidden sm:block">SkillPath AI</span>
+                            <span className="text-xl font-bold font-heading gradient-text hidden sm:block">Skill Taxonomy Builder</span>
                         </Link>
 
                         <div className="flex-1 max-w-2xl mx-8 hidden md:block">
