@@ -8,6 +8,21 @@ import { Calendar, ChevronRight, Map, BookOpen, PlayCircle, Star, Award, Search,
 const Step4StudyPlan = () => {
     const { profile, nextStep } = useProfileStore();
 
+    // Helper function to generate platform-specific search URLs
+    const getPlatformSearchUrl = (platform: string, query: string) => {
+        const encodedQuery = encodeURIComponent(query);
+        const platformUrls: { [key: string]: string } = {
+            'Coursera': `https://www.coursera.org/search?query=${encodedQuery}`,
+            'Udemy': `https://www.udemy.com/courses/search/?q=${encodedQuery}`,
+            'Pluralsight': `https://www.pluralsight.com/search?q=${encodedQuery}`,
+            'edX': `https://www.edx.org/search?q=${encodedQuery}`,
+            'LinkedIn Learning': `https://www.linkedin.com/learning/search?keywords=${encodedQuery}`,
+            'Udacity': `https://www.udacity.com/courses/all?search=${encodedQuery}`,
+            'Khan Academy': `https://www.khanacademy.org/search?page_search_query=${encodedQuery}`,
+        };
+        return platformUrls[platform] || `https://www.google.com/search?q=${encodedQuery}+${encodeURIComponent(platform)}`;
+    };
+
     // Learning recommendations
     const courses = profile.recommended_courses?.length > 0 ? profile.recommended_courses : [
         { title: 'Advanced System Design Architectural Patterns', platform: 'Coursera', rating: 4.8, duration: '20 hours', type: 'Specialization', icon: Award },
@@ -58,8 +73,69 @@ const Step4StudyPlan = () => {
                 <p className="text-lg text-gray-600">A complete roadmap with recommended courses and learning path</p>
             </div>
 
-            {/* Learning Recommendations Section */}
+            {/* Study Plan Visualization */}
+            <div className="mb-12">
+                <div className="flex items-center justify-center mb-8">
+                    <div className="flex items-center space-x-3 bg-accent-50 px-6 py-3 rounded-full border-2 border-accent-200">
+                        <Map className="w-5 h-5 text-accent-600" />
+                        <h3 className="text-xl font-bold text-gray-900">3-Month Learning Roadmap</h3>
+                    </div>
+                </div>
+
+                <div className="h-[400px] w-full bg-gray-50 rounded-[32px] border border-gray-200 overflow-hidden relative mb-12">
+                    <div className="absolute top-6 left-6 z-10 flex items-center space-x-2 bg-white/80 backdrop-blur p-3 rounded-xl border border-gray-100 shadow-sm">
+                        <Map className="w-5 h-5 text-primary-600" />
+                        <span className="text-sm font-bold text-gray-700">Skill Map Visualization</span>
+                    </div>
+                    <ReactFlow
+                        nodes={initialNodes}
+                        edges={initialEdges}
+                        fitView
+                        nodesConnectable={false}
+                        panOnDrag={true}
+                        zoomOnScroll={false}
+                    >
+                        <Background color="#8b5cf6" variant={'dots' as any} gap={20} size={1} />
+                        <Controls />
+                    </ReactFlow>
+                </div>
+            </div>
+
+            {/* Step-by-Step Breakdown */}
             <div className="mb-16">
+                <h3 className="text-2xl font-bold text-center mb-8 text-gray-900">Step-by-Step Breakdown</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {studyPlanData.map((plan: any, i: number) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: i * 0.1 }}
+                            className="glass-card p-6 rounded-2xl bg-white border-2 border-gray-100 hover:border-primary-200 transition-all relative"
+                        >
+                            <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-primary-600 to-accent-600 rounded-full flex items-center justify-center shadow-lg">
+                                <span className="text-white font-bold text-lg">Step {i + 1}</span>
+                            </div>
+                            <div className="flex items-center space-x-2 mb-4 mt-2">
+                                <Calendar className="w-5 h-5 text-accent-600" />
+                                <span className="font-bold text-accent-700">{plan.phase}</span>
+                            </div>
+                            <h4 className="font-bold text-gray-900 mb-3 text-lg">{plan.goal}</h4>
+                            <div className="space-y-2">
+                                {plan.steps.map((step: string, j: number) => (
+                                    <div key={j} className="flex items-start space-x-3 text-sm text-gray-600">
+                                        <CheckCircle2 className="w-4 h-4 text-success-500 mt-0.5 shrink-0" />
+                                        <span>{step}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Learning Recommendations Section */}
+            <div className="mb-12">
                 <div className="flex items-center justify-center mb-8">
                     <div className="flex items-center space-x-3 bg-primary-50 px-6 py-3 rounded-full border-2 border-primary-200">
                         <BookOpen className="w-5 h-5 text-primary-600" />
@@ -100,83 +176,15 @@ const Step4StudyPlan = () => {
                                 </div>
                             </div>
 
-                            <div className="flex items-center space-x-2 px-4 py-2 bg-primary-50 rounded-lg border border-primary-100">
-                                <Search className="w-4 h-4 text-primary-600 flex-shrink-0" />
-                                <span className="text-sm text-gray-700">
-                                    Search: <span className="font-semibold text-gray-900">"{course.title}"</span>
-                                </span>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-
-            {/* Divider */}
-            <div className="relative mb-16">
-                <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t-2 border-gray-200"></div>
-                </div>
-                <div className="relative flex justify-center">
-                    <span className="bg-gray-50 px-6 py-2 text-sm font-bold text-gray-500 uppercase tracking-wider">Study Timeline</span>
-                </div>
-            </div>
-
-            {/* Study Plan Visualization */}
-            <div className="mb-12">
-                <div className="flex items-center justify-center mb-8">
-                    <div className="flex items-center space-x-3 bg-accent-50 px-6 py-3 rounded-full border-2 border-accent-200">
-                        <Map className="w-5 h-5 text-accent-600" />
-                        <h3 className="text-xl font-bold text-gray-900">3-Month Learning Roadmap</h3>
-                    </div>
-                </div>
-
-                <div className="h-[400px] w-full bg-gray-50 rounded-[32px] border border-gray-200 overflow-hidden relative mb-12">
-                    <div className="absolute top-6 left-6 z-10 flex items-center space-x-2 bg-white/80 backdrop-blur p-3 rounded-xl border border-gray-100 shadow-sm">
-                        <Map className="w-5 h-5 text-primary-600" />
-                        <span className="text-sm font-bold text-gray-700">Skill Map Visualization</span>
-                    </div>
-                    <ReactFlow
-                        nodes={initialNodes}
-                        edges={initialEdges}
-                        fitView
-                        nodesConnectable={false}
-                        panOnDrag={true}
-                        zoomOnScroll={false}
-                    >
-                        <Background color="#8b5cf6" variant={'dots' as any} gap={20} size={1} />
-                        <Controls />
-                    </ReactFlow>
-                </div>
-            </div>
-
-            {/* Step-by-Step Breakdown */}
-            <div className="mb-12">
-                <h3 className="text-2xl font-bold text-center mb-8 text-gray-900">Step-by-Step Breakdown</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {studyPlanData.map((plan: any, i: number) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1 }}
-                            className="glass-card p-6 rounded-2xl bg-white border-2 border-gray-100 hover:border-primary-200 transition-all relative"
-                        >
-                            <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-primary-600 to-accent-600 rounded-full flex items-center justify-center shadow-lg">
-                                <span className="text-white font-bold text-lg">Step {i + 1}</span>
-                            </div>
-                            <div className="flex items-center space-x-2 mb-4 mt-2">
-                                <Calendar className="w-5 h-5 text-accent-600" />
-                                <span className="font-bold text-accent-700">{plan.phase}</span>
-                            </div>
-                            <h4 className="font-bold text-gray-900 mb-3 text-lg">{plan.goal}</h4>
-                            <div className="space-y-2">
-                                {plan.steps.map((step: string, j: number) => (
-                                    <div key={j} className="flex items-start space-x-3 text-sm text-gray-600">
-                                        <CheckCircle2 className="w-4 h-4 text-success-500 mt-0.5 shrink-0" />
-                                        <span>{step}</span>
-                                    </div>
-                                ))}
-                            </div>
+                            <a
+                                href={getPlatformSearchUrl(course.platform, course.title)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center space-x-2 px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-lg border border-primary-700 transition-all shadow-sm hover:shadow-md"
+                            >
+                                <Search className="w-4 h-4 flex-shrink-0" />
+                                <span className="text-sm font-semibold">Search: "{course.title}"</span>
+                            </a>
                         </motion.div>
                     ))}
                 </div>
