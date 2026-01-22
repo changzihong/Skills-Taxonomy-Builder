@@ -56,36 +56,7 @@ const LandingPage = () => {
                     </motion.div>
 
                     {/* Hero Image/Illustration Placeholder */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="mt-20 relative mx-auto max-w-5xl"
-                    >
-                        <div className="relative rounded-2xl overflow-hidden glass-card p-4 border-white/40">
-                            <div className="bg-gray-900 rounded-xl aspect-[16/9] flex items-center justify-center relative overflow-hidden">
-                                {/* Visual Representation of Dashboard */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-primary-900/20 to-accent-900/20"></div>
-                                <div className="relative z-10 w-full h-full p-8 flex flex-col justify-between">
-                                    <div className="flex justify-between items-start">
-                                        <div className="space-y-4">
-                                            <div className="w-48 h-8 bg-white/10 rounded-lg animate-pulse"></div>
-                                            <div className="w-32 h-6 bg-white/5 rounded-lg animate-pulse"></div>
-                                        </div>
-                                        <div className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center">
-                                            <TrendingUp className="text-white w-6 h-6" />
-                                        </div>
-                                    </div>
-                                    <div className="grid grid-cols-3 gap-6">
-                                        <div className="h-32 bg-white/10 rounded-xl animate-pulse"></div>
-                                        <div className="h-32 bg-white/10 rounded-xl animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-                                        <div className="h-32 bg-white/10 rounded-xl animate-pulse" style={{ animationDelay: '0.4s' }}></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </motion.div>
+                    
                 </div>
             </section>
 
