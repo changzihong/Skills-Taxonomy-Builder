@@ -1,7 +1,7 @@
 import React from 'react';
 import { useProfileStore } from '@/store/useProfileStore';
 import { motion } from 'framer-motion';
-import { BookOpen, ExternalLink, PlayCircle, Star, Award, ChevronRight } from 'lucide-react';
+import { BookOpen, PlayCircle, Star, Award, ChevronRight, Search } from 'lucide-react';
 
 const Step4Recommendations = () => {
     const { profile, nextStep } = useProfileStore();
@@ -17,7 +17,7 @@ const Step4Recommendations = () => {
         <div className="max-w-4xl mx-auto">
             <div className="mb-12 text-center">
                 <h2 className="text-3xl font-bold font-heading mb-4 text-gray-900">Learning Recommendations</h2>
-                <p className="text-gray-600">Based on your gaps, we've curated the best resources to help you level up.</p>
+                <p className="text-gray-600">Based on your gaps, here are the suggested courses to search for and explore.</p>
             </div>
 
             <div className="grid grid-cols-1 gap-6 mb-12">
@@ -51,15 +51,12 @@ const Step4Recommendations = () => {
                             </div>
                         </div>
 
-                        <a
-                            href={course.url || `https://www.google.com/search?q=${encodeURIComponent(course.title + ' ' + course.platform)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-secondary py-2 px-6 flex items-center space-x-2 text-sm"
-                        >
-                            <span>View Course</span>
-                            <ExternalLink className="w-4 h-4" />
-                        </a>
+                        <div className="flex items-center space-x-2 px-4 py-2 bg-primary-50 rounded-lg border border-primary-100">
+                            <Search className="w-4 h-4 text-primary-600 flex-shrink-0" />
+                            <span className="text-sm text-gray-700">
+                                Search: <span className="font-semibold text-gray-900">"{course.title}"</span>
+                            </span>
+                        </div>
                     </motion.div>
                 ))}
             </div>
