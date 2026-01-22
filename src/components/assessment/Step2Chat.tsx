@@ -44,7 +44,6 @@ const Step2Chat = () => {
                 assessment_answers: newAnswers,
                 // Clear previous analysis to force re-generation
                 skill_gaps: [],
-                current_skills: [],
                 recommendations: '',
                 study_plan: [],
                 recommended_courses: [],
@@ -191,18 +190,31 @@ const Step2Chat = () => {
                         )}
 
                         <div className="mt-8 flex justify-end">
-                            <div className="relative group">
-                                <button
-                                    disabled={!currentAnswer || (Array.isArray(currentAnswer) && currentAnswer.length === 0)}
-                                    onClick={handleNext}
-                                    className="p-4 rounded-xl bg-primary-600 hover:bg-primary-700 text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                                >
+                            <motion.button
+                                disabled={!currentAnswer || (Array.isArray(currentAnswer) && currentAnswer.length === 0)}
+                                onClick={handleNext}
+                                className="flex items-center bg-primary-600 hover:bg-primary-700 text-white rounded-xl shadow-lg hover:shadow-xl h-14 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
+                                initial="initial"
+                                whileHover={(!currentAnswer || (Array.isArray(currentAnswer) && currentAnswer.length === 0)) ? "initial" : "hover"}
+                                variants={{
+                                    initial: { width: "3.5rem" },
+                                    hover: { width: "auto" }
+                                }}
+                                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                            >
+                                <div className="flex items-center justify-center min-w-[3.5rem] h-full">
                                     <Send className="w-5 h-5" />
-                                </button>
-                                <div className="absolute bottom-full right-0 mb-2 px-3 py-1.5 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
-                                    {currentIndex === questions.length - 1 ? 'Finish Assessment' : 'Next Question'}
                                 </div>
-                            </div>
+                                <motion.span
+                                    className="whitespace-nowrap font-bold pr-6 pl-1"
+                                    variants={{
+                                        initial: { opacity: 0 },
+                                        hover: { opacity: 1 }
+                                    }}
+                                >
+                                    {currentIndex === questions.length - 1 ? 'Finish Assessment' : 'Next Question'}
+                                </motion.span>
+                            </motion.button>
                         </div>
                     </div>
                 </motion.div>

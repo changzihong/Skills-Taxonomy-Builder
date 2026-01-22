@@ -78,7 +78,7 @@ const AssessmentPage = () => {
                                                 ? 'gradient-text font-extrabold'
                                                 : 'text-gray-400'}
                                             animate={{
-                                                scale: current_step === i + 1 ? 1.15 : 1,
+                                                scale: current_step === i + 1 ? 1.3 : 1,
                                             }}
                                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
                                             style={{

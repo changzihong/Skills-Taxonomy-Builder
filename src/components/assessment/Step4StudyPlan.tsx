@@ -191,14 +191,30 @@ const Step4StudyPlan = () => {
             </div>
 
             <div className="flex justify-end">
-                <div className="relative group">
-                    <button onClick={nextStep} className="p-4 rounded-xl bg-primary-600 hover:bg-primary-700 text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all">
+                <motion.button
+                    onClick={nextStep}
+                    className="flex items-center bg-primary-600 hover:bg-primary-700 text-white rounded-xl shadow-lg hover:shadow-xl h-14 overflow-hidden"
+                    initial="initial"
+                    whileHover="hover"
+                    variants={{
+                        initial: { width: "3.5rem" },
+                        hover: { width: "auto" }
+                    }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                    <div className="flex items-center justify-center min-w-[3.5rem] h-full">
                         <ChevronRight className="w-6 h-6" />
-                    </button>
-                    <div className="absolute bottom-full right-0 mb-2 px-3 py-1.5 bg-gray-900 text-white text-sm font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap pointer-events-none">
-                        See Salary Projections
                     </div>
-                </div>
+                    <motion.span
+                        className="whitespace-nowrap font-bold pr-6 pl-1"
+                        variants={{
+                            initial: { opacity: 0 },
+                            hover: { opacity: 1 }
+                        }}
+                    >
+                        See Salary Projections
+                    </motion.span>
+                </motion.button>
             </div>
         </div>
     );
