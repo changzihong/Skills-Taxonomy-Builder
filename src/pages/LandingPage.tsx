@@ -9,7 +9,10 @@ const LandingPage = () => {
         <div className="overflow-hidden">
             {/* Header */}
             <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-center">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                    <div className="flex items-center space-x-2">
+                        <span className="text-2xl font-bold font-heading gradient-text">Skill Taxonomy Builder</span>
+                    </div>
                     <nav className="flex space-x-8">
                         <a href="#features" className="text-gray-600 hover:text-primary-600 font-medium transition-colors">Features</a>
                         <a href="#how-it-works" className="text-gray-600 hover:text-primary-600 font-medium transition-colors">How it works</a>
@@ -38,12 +41,17 @@ const LandingPage = () => {
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed">
                             Discover your skill gaps, get personalized learning plans, and unlock your earning potential in minutes. Powered by advanced AI to help you navigate your professional growth.
                         </p>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <motion.div
+                            className="flex flex-col sm:flex-row items-center justify-center gap-6"
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 0.5, delay: 0.3, type: "spring", stiffness: 200 }}
+                        >
                             <Link to="/assess" className="px-8 py-4 rounded-2xl font-bold text-white shadow-xl shadow-teal-500/30 bg-gradient-to-r from-teal-500 to-indigo-600 hover:scale-105 transition-all duration-200 text-lg flex items-center space-x-2">
                                 <span>Start Your Journey — It's Free</span>
                                 <ArrowRight className="w-5 h-5" />
                             </Link>
-                        </div>
+                        </motion.div>
                     </motion.div>
 
                     {/* Hero Image/Illustration Placeholder */}
